@@ -14,7 +14,7 @@ export const Home = () =>
             <header >
                 {showMenu && <MenuOptions></MenuOptions>}
 
-                <Navbar show={() => {setshowDropdown(!showDropdown)}} showMenu={() => setshowMenu(!showMenu)}>
+                <Navbar show={() => {setshowDropdown(!showDropdown)}} showMenu={() => {setshowMenu(!showMenu)}}>
                     <NavbarItem name="movies"></NavbarItem>
                     <NavbarItem name="Home"></NavbarItem>
                     <NavbarItem name="tv shows"></NavbarItem>
