@@ -10,11 +10,11 @@ export const Home = () =>
     const [showDropdown, setshowDropdown] = useState(false);
     const [showMenu, setshowMenu] = useState(false);
     return (
-        <div className="home">
-            <header>
+        <div className="home" style={showMenu ? {animation: "slideBottom 1s ease"}: null}>
+            <header >
                 {showMenu && <MenuOptions></MenuOptions>}
 
-                <Navbar show={() => {setshowDropdown(!showDropdown)}} showMenu={() => setshowMenu(!showMenu)} animate={showMenu && "slideBottom"}>
+                <Navbar show={() => {setshowDropdown(!showDropdown)}} showMenu={() => setshowMenu(!showMenu)}>
                     <NavbarItem name="movies"></NavbarItem>
                     <NavbarItem name="Home"></NavbarItem>
                     <NavbarItem name="tv shows"></NavbarItem>
@@ -23,10 +23,8 @@ export const Home = () =>
 
             {showDropdown && <Dropdown></Dropdown>}
             
-            <div className="main" style={showMenu ? {animationName: "slideBottom"}: null}>
-                <div className="main">
-                    <Slider></Slider>
-                </div>
+            <div className="main">
+                <Slider></Slider>
             </div>
         </div>
     )

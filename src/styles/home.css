@@ -138,31 +138,18 @@ body
 {
     color: white;
     border-bottom: 2px solid black;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 200;
-    height: 4rem;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: slideBottom 0.3s;
-    animation-timing-function: ease;
 }
-
-.navbar
-{
-    animation-duration: 0.3s;
-}
-
-.main
-{
-    animation-duration: 0.3s;
-}
-
 
 @keyframes slideBottom {
     from
     {
-        transform: translateY(-150%);
+        transform: translateY(-50%);
     }
 
     to
@@ -171,34 +158,26 @@ body
     }
 }
 
-@keyframes slideTop {
+@keyframes slideBottom2 {
     from
     {
-        transform: translateY(0%);
+        transform: translateY(-50%);
     }
 
     to
     {
-        transform: translateY(150%);
+        transform: translateY(0%);
     }
 }
 
-
+/* For tables*/
 @media screen and (min-width: 768px) {
-    body {
-      font-size: 18px;
-      background-color: white;
-    }
+
   }
   
   /* Media query for small desktops */
   @media screen and (min-width: 992px) {
-    body {
-        background-color: red;
-      font-size: 20px;
-    }
-
-    .menuButton
+    .menuButton, .menu-options
     {
         display: none;
     }

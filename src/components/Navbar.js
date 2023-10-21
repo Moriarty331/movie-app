@@ -7,7 +7,7 @@ import menu from '../images/menu.png';
 export const Navbar = (props) =>{
     return(
         <>
-            <div className="navbar" style={{animationName: props.animate}}>   
+            <div className="navbar">   
 
                 <div className="logo-section">
                     <img src={parrotImage} alt="" />
@@ -17,7 +17,7 @@ export const Navbar = (props) =>{
                 <ul className='navbar-nav'>
                     {props.children}
                     <li className="nav-item" onClick={props.show}>
-                        <a href="">categories</a>
+                        <a href="#">categories</a>
                         <img src={arrowDown} alt="" className='arrowDown'/>
                     </li>
                 </ul>
@@ -41,7 +41,6 @@ export const NavbarItem = (props) =>
         </li>
     )
 }
-
 
 export const Dropdown = () =>
 {
