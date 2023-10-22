@@ -1,28 +1,32 @@
 
-body
+
+
+
+.home
 {
-    background-color: var(--background);
+    height: 100vh;
+    grid-template-rows: 7rem 1fr;
+    background-color: black;
 }
 
+header
+{
+    height: 15%;
+}
 
 .navbar
 {
+    border-radius: 10px;
+    background-color: var(--primary);
     color: white;
     width: 100%;
-    height: 7rem;
-    background-color: var(--background);
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-right: 100px;
     animation-duration: 0.5s;
 }  
-
-.header > *
-{
-    color: white;
-}
-
 
 .navbar-nav, .logo-section
 {
@@ -70,8 +74,9 @@ body
     background-color: rgba(0,0,0,0.7);
     border-radius: 10px;
     color: white;
-    animation: slideBottom2 0.3s ease;
+    animation: slideBottom2 0.5s ease;
     display: none;
+    border: 1px solid white;
 }
 
 .dropdown > li
@@ -82,13 +87,12 @@ body
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 
-.logo-section
+.dropdown > li:not(:last-child)
 {
-    margin-left: 1rem;
+    border-bottom: 1px solid white;
 }
 
 .logo-section > h1
@@ -100,7 +104,12 @@ body
 .logo-section > img
 {
     filter: invert(100%) sepia(71%) saturate(2%) hue-rotate(263deg) brightness(110%) contrast(101%);
-    width: 3.5rem;
+    width: 3rem;
+}
+
+.logo-section
+{
+    margin-left: 1rem;
 }
 
 .arrowDown
@@ -141,10 +150,16 @@ body
 }
 
 
+.menu-options
+{
+    background-color: #343434;
+}
+
 .menu-options > p
 {
+   
     color: white;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
     font-size: 1rem;
     font-weight: 200;
     height: 3rem;
@@ -153,6 +168,81 @@ body
     justify-content: center;
 }
 
+.main
+{
+    height: 85%;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+.swiper 
+{
+    border: 2px solid white;
+    height: 95%;
+    width: 95%;
+    border-radius: 10px;
+}
+  
+.swiper-slide 
+{
+    background-color: red;
+    height: 80%;
+    width: 100%;
+}
+  
+.swiper-slide > img 
+{
+    width: 100%;
+    height: 100%;
+}
+   
+  
+.autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var();
+}
+  
+.autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--background);
+    fill: none;
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+}
+
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    top: var(--swiper-navigation-top-offset, 50%);
+    width: calc(var(--swiper-navigation-size) / 44 * 27);
+    height: var(--swiper-navigation-size);
+    margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--swiper-navigation-color, var(--swiper-theme-color));
+    color: black;
+  }
+/* ANIMATIONS */
 @keyframes slideBottom {
     from
     {
@@ -177,13 +267,42 @@ body
     }
 }
 
-/* For tables*/
-@media screen and (min-width: 768px) {
+@keyframes slideToRight {
+    from
+    {
+        transform: translateX(-100%);
+    }
+    to
+    {
+        transform: translateX(0%);
+    }
+}
 
-  }
+/* For tables*/
+@media screen and (min-width: 768px) 
+    {
+        .logo-section > h1
+        {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        
+        .logo-section > img
+        {
+            filter: invert(100%) sepia(71%) saturate(2%) hue-rotate(263deg) brightness(110%) contrast(101%);
+            width: 3.5rem;
+        }
+
+        .menu-options > p
+        {
+            font-size: 1.2rem;
+        }
+        
+
+    }
   
   /* Media query for small desktops */
-  @media screen and (min-width: 992px) {
+@media screen and (min-width: 992px) {
     .menuButton, .menu-options
     {
         display: none;
@@ -195,11 +314,33 @@ body
     }
 
     .dropdown{
+        z-index: 100;
         display: block;
     }
+
+    .swiper
+    {
+        width: 98%;
+    }
+
+    .swiper-slide > img 
+    {
+        width: 100%;
+        height: 100%;
+    }
+ 
   }
   
   /* Media query for large desktops */
-  @media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) 
+  {
+    .logo-section > h1
+    {
+        font-size: 3rem;
+    }
 
-  }
+    .logo-section
+    {
+    margin-left: 1rem;
+    }
+}

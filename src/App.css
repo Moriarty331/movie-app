@@ -2,9 +2,13 @@
 
 :root
 {
-    --background: rgba(0,0,0,0.7);
-    --primary: rgba(0,0,0,0.9);
+    --background: rgba(0,0,0,0.6);
+    --primary: rgba(0,0,0,1);
     --fontColor: black;
+    --swiper-theme-color: red;
+    --swiper-navigation-color: #000;
+    --swiper-pagination-color: #000;
+    --swiper-pagination-bullet-inactive-color: #000;
 }
 
 *{
@@ -13,5 +17,74 @@
   list-style: none;
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+.swiper-button-next::after, .swiper-rtl .swiper-button-prev::after {
+  content: 'next';
+}
+.swiper-button-prev::after, .swiper-button-next::after {
+  font-family: swiper-icons;
+  font-size: var(--swiper-navigation-size);
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-feature-settings: ;
+  font-variant: initial;
+  line-height: 1;
+}
+element {
+}
+.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: auto;
+  pointer-events: none;
+}
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, 10px);
+  left: auto;
+}
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, 10px);
+  left: auto;
+}
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: var(--swiper-navigation-top-offset, 50%);
+  width: calc(var(--swiper-navigation-size) / 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--swiper-navigation-color, var(--swiper-theme-color));
+}
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: var(--swiper-navigation-top-offset, 50%);
+  width: calc(var(--swiper-navigation-size) / 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--swiper-navigation-color, var(--swiper-theme-color));
+  color: black;
+}
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: var(--swiper-navigation-top-offset, 50%);
+  width: calc(var(--swiper-navigation-size) / 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
 }
 
