@@ -61,20 +61,20 @@ export const Home = () =>
                     onAutoplayTimeLeft={onAutoplayTimeLeft}
                     className="mySwiper"
                 >
-                    <SwiperSlide> <img src={poster10} alt="" /> </SwiperSlide>
+                    <SwiperSlide> <img src={poster1} alt="" /> </SwiperSlide>
                     <SwiperSlide><img src={poster2} alt="" /></SwiperSlide>
                     <SwiperSlide><img src={poster3} alt="" /></SwiperSlide>
                     <SwiperSlide><img src={poster4} alt="" /></SwiperSlide>
-                    <SwiperSlide><img src={poster5} alt="" /></SwiperSlide>
+                    <SwiperSlide><img src={poster3} alt="" /></SwiperSlide>
                     <SwiperSlide><img src={poster6} alt="" /></SwiperSlide>
                     <SwiperSlide><img src={poster3} alt="" /></SwiperSlide>
                     <SwiperSlide><img src={poster8} alt="" /></SwiperSlide>
                     <SwiperSlide><img src={poster9} alt="" /></SwiperSlide>
                     <div className="autoplay-progress" slot="container-end">
-                    <svg viewBox="0 0 48 48" ref={progressCircle}>
-                        <circle cx="24" cy="24" r="20"></circle>
-                    </svg>
-                    <span ref={progressContent}></span>
+                        <svg viewBox="0 0 48 48" ref={progressCircle}>
+                            <circle cx="24" cy="24" r="20"></circle>
+                        </svg>
+                        <span ref={progressContent}></span>
                     </div>
                 </Swiper>
             </div>

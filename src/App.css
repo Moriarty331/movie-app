@@ -6,9 +6,9 @@
     --primary: rgba(0,0,0,1);
     --fontColor: black;
     --swiper-theme-color: red;
-    --swiper-navigation-color: #000;
-    --swiper-pagination-color: #000;
-    --swiper-pagination-bullet-inactive-color: #000;
+    --swiper-navigation-color: white;
+    --swiper-pagination-color: white;
+    --swiper-pagination-bullet-inactive-color: white;
 }
 
 *{
