@@ -3,6 +3,37 @@ import parrotImage from '../images/logo.png';
 import React from 'react';
 import arrowDown from '../images/arrow-down.png';
 import menu from '../images/menu.png';
+import { motion } from 'framer-motion';
+
+const textVariants = {
+    initial: {
+        y: "-100vh"
+    },
+    animate: {
+        y: 0,
+        transition: {
+            type: "tween",
+            delay: .5,
+            duration: 1
+        }
+    }
+}
+
+
+const imgVariants = {
+    initial: {
+        x: "-100vw"
+    },
+    animate: {
+        x: 0,
+        transition: {
+            type: "tween",
+            delay: .5,
+            
+            duration: 1
+        }
+    }
+}
 
 export const Navbar = (props) =>{
     return(
@@ -10,8 +41,16 @@ export const Navbar = (props) =>{
             <div className="navbar">   
 
                 <div className="logo-section">
-                    <img src={parrotImage} alt="" />
-                    <h1>MovieParrot</h1>
+                    <motion.img src={parrotImage} alt=""
+                    variants={imgVariants}
+                    initial="initial"
+                    animate="animate"
+                    />
+                    <motion.h1
+                    variants={textVariants}
+                    initial="initial"
+                    animate="animate"
+                    >MovieParrot</motion.h1>
                 </div> 
 
                 <ul className='navbar-nav'>

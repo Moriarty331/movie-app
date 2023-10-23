@@ -79,6 +79,7 @@ header
     border: 1px solid white;
 }
 
+
 .dropdown > li
 {
     font-size: 1rem;
@@ -97,8 +98,7 @@ header
 
 .logo-section > h1
 {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: clamp(1rem, 6vw, 5rem);
 }
 
 .logo-section > img
@@ -281,11 +281,6 @@ header
 /* For tables*/
 @media screen and (min-width: 768px) 
     {
-        .logo-section > h1
-        {
-            font-size: 2rem;
-            font-weight: 500;
-        }
         
         .logo-section > img
         {
