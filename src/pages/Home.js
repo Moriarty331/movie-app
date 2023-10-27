@@ -1,22 +1,20 @@
 import '../styles/home.css'
-import {Navbar, NavbarItem, Dropdown} from '../components/Navbar.js'
+import {Navbar, NavbarItem, Dropdown, LogoSection} from '../components/Navbar.js'
 import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import poster1 from '../images/poster1.jpg'
 import poster2 from '../images/poster2.jpg'
 import poster3 from '../images/poster3.jpg'
 import poster4 from '../images/poster4.jpg'
-import poster5 from '../images/poster5.jpg'
 import poster6 from '../images/poster6.jpg'
-import poster7 from '../images/poster7.jpg'
 import poster8 from '../images/poster8.jpg'
 import poster9 from '../images/poster9.jpg'
-import poster10 from '../images/poster10.jpg'
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import {Link} from 'react-router-dom';
+import arrowDown from '../images/arrow-down.png'
 
 export const Home = () =>
 {
@@ -35,11 +33,15 @@ export const Home = () =>
         <div className="home" >
             <header style={showMenu ? {animation: "slideBottom 0.5s ease"}: null}>
                 {showMenu && <MenuOptions></MenuOptions>}
-
-                <Navbar show={() => {setshowDropdown(!showDropdown)}} showMenu={() => {setshowMenu(!showMenu)}}>
-                    <NavbarItem name="movies"></NavbarItem>
-                    <NavbarItem name="Home"></NavbarItem>
-                    <NavbarItem name="tv shows"></NavbarItem>
+                
+                <Navbar show={() => {setshowDropdown(!showDropdown)}} showMenu={() => {setshowMenu(!showMenu)}} logo={<LogoSection name="MovieParrot"></LogoSection>}>
+                    <Link to="/movies"><NavbarItem name="movies"></NavbarItem></Link>
+                    <Link to="/"><NavbarItem name="Home"></NavbarItem></Link>
+                    <Link to="/tv-shows"><NavbarItem name="tv shows"></NavbarItem></Link>
+                    <li className="nav-item categories" onClick={() => setshowDropdown(!showDropdown)} >
+                        <p>Categories</p>
+                        <img src={arrowDown} alt="" className='arrowDown'/>
+                    </li>
                 </Navbar>
             </header>
             
@@ -86,9 +88,9 @@ const MenuOptions = () =>
 {
     return(
         <div className="menu-options">
-                <p>Movies</p>
-                <p>Home</p>
-                <p>Tv Shows</p>
+                <Link to="/"><p>Home</p></Link>
+                <Link to="/movies"><p>Movies</p></Link>
+                <Link to="/"><p>Movies</p></Link>
         </div>
     )
 }

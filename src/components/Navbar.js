@@ -1,25 +1,46 @@
 import '../styles/home.css'
 import parrotImage from '../images/logo.png';
 import React from 'react';
-import arrowDown from '../images/arrow-down.png';
 import menu from '../images/menu.png';
+import { motion } from 'framer-motion';
+
+const textVariants = {
+    initial: {
+        y: "-100vh"
+    },
+    animate: {
+        y: 0,
+        transition: {
+            type: "tween",
+            delay: .5,
+            duration: 0.5
+        }
+    }
+}
+
+
+const imgVariants = {
+    initial: {
+        x: "-100vw"
+    },
+    animate: {
+        x: 0,
+        transition: {
+            type: "tween",
+            delay: .5,
+            duration: 0.5
+        }
+    }
+}
 
 export const Navbar = (props) =>{
     return(
         <>
             <div className="navbar">   
-
-                <div className="logo-section">
-                    <img src={parrotImage} alt="" />
-                    <h1>MovieParrot</h1>
-                </div> 
+                {props.logo}
 
                 <ul className='navbar-nav'>
                     {props.children}
-                    <li className="nav-item" onClick={props.show}>
-                        <a href="#">categories</a>
-                        <img src={arrowDown} alt="" className='arrowDown'/>
-                    </li>
                 </ul>
 
                 <div className="menuButton" onClick={props.showMenu}>
@@ -35,9 +56,7 @@ export const NavbarItem = (props) =>
 {
     return(
         <li className="nav-item">
-            <a href="#">
-                {props.name}
-            </a>
+            <p>{props.name}</p>
         </li>
     )
 }
@@ -52,5 +71,24 @@ export const Dropdown = () =>
             <li>Drama</li>
             <li>Sci-fi</li>
         </ul>    
+    )
+}
+
+
+export const LogoSection = (props) =>
+{
+    return(
+        <div className="logo-section">
+                    <motion.img src={parrotImage} alt=""
+                    variants={imgVariants}
+                    initial="initial"
+                    animate="animate"
+                    />
+                    <motion.h1
+                    variants={textVariants}
+                    initial="initial"
+                    animate="animate"
+                    >{props.name}</motion.h1>
+        </div> 
     )
 }

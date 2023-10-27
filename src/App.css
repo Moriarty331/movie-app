@@ -2,13 +2,14 @@
 
 :root
 {
-    --background: rgba(0,0,0,0.6);
-    --primary: rgba(0,0,0,1);
-    --fontColor: black;
-    --swiper-theme-color: red;
+    --background: #101428;
+    --primary: #4260db;
+    --fontColor: white;
     --swiper-navigation-color: white;
     --swiper-pagination-color: white;
     --swiper-pagination-bullet-inactive-color: white;
+    --hover-clr: #FFC107;
+    --swiper-width: 5000px;
 }
 
 *{
