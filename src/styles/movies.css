@@ -2,7 +2,7 @@
 .movies
 {
     background-color: var(--background);
-    height: auto;
+    height: 100vh;
     width: 100vw;
     padding-bottom: 1rem;
 }
@@ -134,6 +134,7 @@
     height: 75%;
     width: 100%;
     margin-top: 1rem;
+    overflow-y: scroll;
 }
 
 .movie-list
@@ -206,30 +207,6 @@
     color: black;
 }
 
-.exit
-{
-    position: absolute;
-    right: 0;
-    width: 10%;
-    height: 7%;
-    background-color: red;
-    outline: none;
-    border: none;
-    border-top-right-radius: 10px;
-    cursor: pointer;
-}
-
-.exit > h1
-{
-    font-weight: 500;
-    font-size: 1rem;
-    color: black;
-}
-
-.exit:hover
-{
-    filter: brightness(0.7);
-}
 
 .list > li
 {
@@ -241,38 +218,56 @@
     filter: brightness(1.15);
 }
 
-#movie-active
+.click
 {
     position: fixed;
-    z-index: 100;
-    height: 72%;
-    margin: auto;
-    display: flex;
-    margin: auto;
-    width: 93%;
-}
-
-#movie-active
-{
-    justify-self: normal;
-    display: grid;
-    animation: 0.5s;
-}
-
-#movie-active > .movie-title
-{
-    width: 90%;
-    text-align: center;
+    height: 76vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 5000;
+    background-color: rgba(16, 20, 40, 0.95);
 }
 
-#movie-active > button
+.pop-up
 {
-    display: block;
+    width: 93%;
+    height: 70%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: right 2rem;
+    border-radius: 10px;
 }
 
+.top img
+{
+    width: 2rem;
+    filter: invert(13%) sepia(87%) saturate(6518%) hue-rotate(359deg) brightness(109%) contrast(118%);
+    float: right;
+    cursor: pointer;
+}
+
+.top img:hover
+{
+    filter: brightness(1.2);
+}
+
+.top
+{
+    width: 100%;
+    background-color: var(--hover-clr);
+    height: 2rem;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.top > span
+{
+    background-color: red;
+    height: inherit;
+}
 /*ANIMATIONS*/
 @keyframes slide {
     from
@@ -301,9 +296,14 @@
     {
         width: 97%;
     }
+
+    .pop-up
+    {
+        width: 70%;
+    }
+
+
 }
-
-
 
 /* Media query for small desktop screens */
 @media screen and (min-width: 1024px) {
@@ -316,9 +316,18 @@
         gap: 1rem;
 
     }
+
+    .pop-up
+    {
+        width: 60%;
+    }
+   
 }
 
 /* Media query for larger desktop screens */
 @media screen and (min-width: 1440px) {
-
+    .pop-up
+    {
+        width: 50%;
+    }
 }

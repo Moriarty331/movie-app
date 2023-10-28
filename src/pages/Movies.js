@@ -1,8 +1,10 @@
 
 import '../styles/movies.css'
 import arrowDown from '../images/arrow-down.png'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { BackToHome } from '../components/BackToHome';
+import { motion } from 'framer-motion';
+import exit from '../images/logout.png'
 
 // Import Swiper styles
 
@@ -11,6 +13,21 @@ export const Movies = () =>{
     const [displayData, setDisplayData] = useState([]);
     const [showExit, setshowExit] = useState(false);
     const [showAnimation, setshowAnimation] = useState(false);
+    const [displayImage, setdisplayImage] = useState("");
+    const [click, setClick] = useState(false);
+    const imgVariants = {
+        initial: {
+            x: "-100vw"
+        },
+        animate: {
+            x: 0,
+            transition: {
+                type: "tween",
+                delay: .5,
+                duration: 0.5
+            }
+        }
+    }
 
     const handeDropdown = (dropdownName) =>
     {
@@ -32,17 +49,20 @@ export const Movies = () =>{
     fetchData();
 
     const handlePop = (e) =>
-    {
-        if (e.target.id === 'lists')
-            e.target.id = 'movie-active'
+    {     
+        e.target.id = 'movie-active'
+        setshowAnimation(true)
+        setdisplayImage(e.target.style.backgroundImage);
+        setClick(!click)
         setshowExit(true)
-        setshowAnimation(true);
     }
 
+    
     const handleExit = (e) =>
     {
-        e.target.parentNode.parentNode.id = "lists"
         setshowAnimation(false)
+        e.target.parentNode.parentNode.id = "lists"
+
     }
     
     return(
@@ -95,18 +115,34 @@ export const Movies = () =>{
                             </MoviesNavItem>
                         </ul>
                     </div>
+
+                   
             </header>
+                                
+            {click && <div className="click">               
+                <div className="pop-up" style={{backgroundImage: displayImage}}>
+                    <div className="top">
+                       <img src={exit} alt="" onClick={() => {setClick(!click); setdisplayImage("")}}/>
+                    </div>
+                </div>
+            </div>}
 
             <div className="movies-main">
                 <div className="movie-list">
                     <ul className="list">
                        {displayData.map((data, key) => {
                             return(
-                                <li onClick={handlePop} style={{backgroundImage : `url(${base_IMAGEURL + data.poster_path})`, animationName: showAnimation ? "slide" : null}} key={key} id="lists">
+                                <motion.li onClick={handlePop} 
+                                style={{backgroundImage : `url(${base_IMAGEURL + data.poster_path})`, animationName: showAnimation ? "slide" : null}} 
+                                key={key} 
+                                id="lists"
+                                variants={showAnimation ? imgVariants : {}}
+                                initial="initial"
+                                animate="animate"
+                                >
                                     <span className='vote'>{data.vote_average}</span>
-                                    <button className='exit' onClick={handleExit}><h1>X</h1></button>
                                     <h2 className='movie-title'>{data.title}</h2>
-                                </li>
+                                </motion.li>
                             )
                        })}
                        
