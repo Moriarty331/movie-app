@@ -90,7 +90,7 @@ const MenuOptions = () =>
         <div className="menu-options">
                 <Link to="/"><p>Home</p></Link>
                 <Link to="/movies"><p>Movies</p></Link>
-                <Link to="/"><p>Movies</p></Link>
+                <Link to="/tv-shows"><p>Tv Shows</p></Link>
         </div>
     )
 }

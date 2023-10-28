@@ -1,7 +1,7 @@
 
 import '../styles/movies.css'
 import arrowDown from '../images/arrow-down.png'
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { BackToHome } from '../components/BackToHome';
 import { motion } from 'framer-motion';
 import exit from '../images/logout.png'
@@ -11,7 +11,6 @@ import exit from '../images/logout.png'
 export const Movies = () =>{
     const [showDropdown, setshowDropdown] = useState(null);
     const [displayData, setDisplayData] = useState([]);
-    const [showExit, setshowExit] = useState(false);
     const [showAnimation, setshowAnimation] = useState(false);
     const [displayImage, setdisplayImage] = useState("");
     const [click, setClick] = useState(false);
@@ -54,19 +53,18 @@ export const Movies = () =>{
         setshowAnimation(true)
         setdisplayImage(e.target.style.backgroundImage);
         setClick(!click)
-        setshowExit(true)
     }
 
-    
-    const handleExit = (e) =>
-    {
-        setshowAnimation(false)
-        e.target.parentNode.parentNode.id = "lists"
-
-    }
     
     return(
         <div className="movies">
+             {click && <div className="click">               
+                <div className="pop-up" style={{backgroundImage: displayImage}}>
+                    <div className="top">
+                       <img src={exit} alt="" onClick={() => {setClick(!click); setdisplayImage("")}}/>
+                    </div>
+                </div>
+            </div>}
             <header>
                    <BackToHome name="Movies"></BackToHome>
 
@@ -119,13 +117,6 @@ export const Movies = () =>{
                    
             </header>
                                 
-            {click && <div className="click">               
-                <div className="pop-up" style={{backgroundImage: displayImage}}>
-                    <div className="top">
-                       <img src={exit} alt="" onClick={() => {setClick(!click); setdisplayImage("")}}/>
-                    </div>
-                </div>
-            </div>}
 
             <div className="movies-main">
                 <div className="movie-list">
@@ -136,9 +127,6 @@ export const Movies = () =>{
                                 style={{backgroundImage : `url(${base_IMAGEURL + data.poster_path})`, animationName: showAnimation ? "slide" : null}} 
                                 key={key} 
                                 id="lists"
-                                variants={showAnimation ? imgVariants : {}}
-                                initial="initial"
-                                animate="animate"
                                 >
                                     <span className='vote'>{data.vote_average}</span>
                                     <h2 className='movie-title'>{data.title}</h2>

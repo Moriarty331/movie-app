@@ -2,7 +2,7 @@
 .movies
 {
     background-color: var(--background);
-    height: 100vh;
+    height: auto;
     width: 100vw;
     padding-bottom: 1rem;
 }
@@ -122,6 +122,12 @@
     height: 2rem;
     font-weight: 300;
     color: white;
+    cursor: pointer;
+}
+
+#movies-dropdown > li:hover{
+    background-color: var(--primary);
+    opacity: 0.6;
 }
 
 #movies-dropdown > li:not(:last-child)
@@ -221,7 +227,7 @@
 .click
 {
     position: fixed;
-    height: 76vh;
+    height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -230,17 +236,26 @@
     background-color: rgba(16, 20, 40, 0.95);
 }
 
+.top
+{
+    width: 100%;
+    height: 2rem;
+    border-bottom: 2px solid var(--primary);
+}
+
 .pop-up
 {
+    background-color: white;
     width: 93%;
     height: 70%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: right 2rem;
     border-radius: 10px;
+    border: 5px solid var(--primary);
 }
 
-.top img
+.top > img
 {
     width: 2rem;
     filter: invert(13%) sepia(87%) saturate(6518%) hue-rotate(359deg) brightness(109%) contrast(118%);
@@ -248,26 +263,11 @@
     cursor: pointer;
 }
 
-.top img:hover
+.top > img:hover
 {
     filter: brightness(1.2);
 }
 
-.top
-{
-    width: 100%;
-    background-color: var(--hover-clr);
-    height: 2rem;
-    background-color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.top > span
-{
-    background-color: red;
-    height: inherit;
-}
 /*ANIMATIONS*/
 @keyframes slide {
     from
