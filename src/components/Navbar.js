@@ -79,7 +79,11 @@ export const LogoSection = (props) =>
 {
     return(
         <div className="logo-section">
-                    <motion.img src={parrotImage} alt=""/>
+                    <motion.img src={parrotImage} alt=""
+                    variants={imgVariants}
+                    initial="initial"
+                    animate="animate"                
+                    />
                     <motion.h1
                     variants={textVariants}
                     initial="initial"

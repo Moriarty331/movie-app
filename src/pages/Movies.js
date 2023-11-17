@@ -13,6 +13,7 @@ export const Movies = () =>{
     const [displayData, setDisplayData] = useState([]);
     const [showAnimation, setshowAnimation] = useState(false);
     const [displayImage, setdisplayImage] = useState("");
+    const [overview, setOverview] = useState("")
     const [click, setClick] = useState(false);
     const imgVariants = {
         initial: {
@@ -47,12 +48,16 @@ export const Movies = () =>{
 
     fetchData();
 
-    const handlePop = (e) =>
+    const handlePop = (e, overview) =>
     {     
-        e.target.id = 'movie-active'
+        if (e.target.id === "lists")
+        {
+            setdisplayImage(e.target.style.backgroundImage);
+            setClick(!click)
+            setOverview(overview)
+            
+        }
         setshowAnimation(true)
-        setdisplayImage(e.target.style.backgroundImage);
-        setClick(!click)
     }
 
     
@@ -61,7 +66,8 @@ export const Movies = () =>{
              {click && <div className="click">               
                 <div className="pop-up" style={{backgroundImage: displayImage}}>
                     <div className="top">
-                       <img src={exit} alt="" onClick={() => {setClick(!click); setdisplayImage("")}}/>
+                       <img src={exit} alt="" onClick={() => {setClick(!click); setdisplayImage(""); setOverview("")}}/>
+                       {overview !== "" && <p className='overview'>{overview}</p>}
                     </div>
                 </div>
             </div>}
@@ -123,7 +129,7 @@ export const Movies = () =>{
                     <ul className="list">
                        {displayData.map((data, key) => {
                             return(
-                                <motion.li onClick={handlePop} 
+                                <motion.li onClick={(e) => handlePop (e, data.overview)} 
                                 style={{backgroundImage : `url(${base_IMAGEURL + data.poster_path})`, animationName: showAnimation ? "slide" : null}} 
                                 key={key} 
                                 id="lists"

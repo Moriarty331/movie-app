@@ -14,6 +14,7 @@ export const TvShows = () =>{
     const [showAnimation, setshowAnimation] = useState(false);
     const [displayImage, setdisplayImage] = useState("");
     const [click, setClick] = useState(false);
+    const [overview, setOverview] = useState("")
     const imgVariants = {
         initial: {
             x: "-100vw"
@@ -47,23 +48,28 @@ export const TvShows = () =>{
 
     fetchData();
 
-    const handlePop = (e) =>
+    const handlePop = (e, overview) =>
     {     
-        e.target.id = 'movie-active'
-        setshowAnimation(true)
-        setdisplayImage(e.target.style.backgroundImage);
-        setClick(!click)
+        if (e.target.id === "lists")
+        {
+            if (overview === "")
+                overview = "some description"
+            setdisplayImage(e.target.style.backgroundImage);
+            setClick(!click)
+            setOverview(overview)
+        }
 
+        setshowAnimation(true)
     }
 
-    
     
     return(
         <div className="movies">
              {click && <div className="click">               
-                <div className="pop-up" style={{backgroundImage: displayImage}}>
+                <div className="pop-up" style={{backgroundImage : displayImage}} >
                     <div className="top">
                        <img src={exit} alt="" onClick={() => {setClick(!click); setdisplayImage("")}}/>
+                       <p className='overview'>{overview}</p>
                     </div>
                 </div>
             </div>}
@@ -125,8 +131,8 @@ export const TvShows = () =>{
                     <ul className="list">
                        {displayData.map((data, key) => {
                             return(
-                                <motion.li onClick={handlePop} 
-                                style={{backgroundImage : `url(${base_IMAGEURL + data.poster_path})`, animationName: showAnimation ? "slide" : null}} 
+                                <motion.li onClick={(e) => handlePop(e, data.overview)} 
+                                style={{backgroundImage : `url(${base_IMAGEURL + data.poster_path})`, animationName: showAnimation ? "slide1" : null}} 
                                 key={key} 
                                 id="lists"
                                 >
